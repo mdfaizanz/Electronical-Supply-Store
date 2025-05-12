@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RKS Electronics</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+    <style>
+        .image-container {
+            position: relative;
+        }
+        .image-container img {
+            width: 100%;
+            height: auto;
+        }
+        .image-container .add-to-wishlist {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            color: rgb(255, 255, 255);
+            font-size: 1.5rem;
+            cursor: pointer;
+            background-color: transparent;
+            border: none;
+        }
+        .image-container .add-to-wishlist::before {
+            content: '\f004'; /* Unicode for heart icon */
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 400; /* Outline heart */
+            color: rgb(0, 0, 0);
+        }
+        .image-container .add-to-wishlist.clicked::before {
+            font-weight: 900; /* Solid heart */
+        }
+        .image-container .add-to-cart {
+            background-color: transparent;
+            border: none; /* Remove border */
+            cursor: pointer;
+        }
+        .add-to-cart{
+            border: none; /* Ensure no border around the cart icon */
+            background: none; /* Remove any background */
+            padding: 0; /* Remove padding */
+        }
+        .user-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .user-actions a {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: white;
+            margin-left: 15px;
+            padding: 8px;
+            position: relative;
+        }
+        .user-actions a .wishlist-count,
+        .user-actions a .cart-count {
+            position: absolute;
+            top: 0px;
+            right: 0px;
+            background: #e74c3c;
+            color: #fff;
+            border-radius: 50%;
+            font-size: 0.75rem;
+            min-width: 18px;
+            height: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 4px;
+            z-index: 2;
+            border: 2px solid #fff;
+            box-sizing: border-box;
+        }
+        .user-actions a i {
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <!-- top navbar -->
+     <div class="top-navbar">
+        <p>Welcome to our shop</p>
+        <div class="icons">
+        <a href="login.html"><i class="fa-solid fa-user"></i></a>
+        </div>
+     </div>
+     <!-- top navbar -->
+
+
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-lg" id="navbar">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="index.html" id="logo"><span id="sp-2">R</span>KS <span id="sp-2">E</span><span id="span1">LECTRONICALS</span></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span id="menu"><i class="fa-solid fa-bars"></i></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Product</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                 Category
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown" style="background: rgb(67, 0, 86)";>
+                  <li><a class="dropdown-item" href="#">Ceiling Fans</a></li>
+                  <li><a class="dropdown-item" href="#">Wires</a></li>
+                  <li><a class="dropdown-item" href="#">Tubelights</a></li>
+                  <li><a class="dropdown-item" href="#">Halogen Bulbs</a></li>
+                  <li><a class="dropdown-item" href="#">Resistors</a></li>
+                  <li><a class="dropdown-item" href="#">Capacitors</a></li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="about.html">About</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="contact.html">Contact</a>
+              </li>
+               <div class="user-actions">
+                <a href="wishlist.html"><i class="fa-solid fa-heart"></i><span class="wishlist-count">0</span></a>
+                <a href="cart.html"><i class="fas fa-shopping-cart"></i><span class="cart-count">0</span></a>
+                </div>
+            </ul>
+            
+            <form class="d-flex" id="search">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+          </div>
+        </div>
+      </nav>
+    <!-- navbar -->
+
+
+<!-- home-content -->
+ <section class="home">
+    <div class="content">
+        <h1><span>Electronical Componenets</span>
+        <br>
+        Up to <span id="span2"> 50%</span> off
+    </h1>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+        Distinctio molestiae, harum ullam earum deleniti dicta corrupti cumque, consequuntur,
+        ipsam eius quod obcaecati laudantium a! Magnam repellat laudantium recusandae nisi iste.</p>
+    <div class="btn"><button>Shop Now</button></div>
+    </div>
+
+    <div class="img">
+        <img src="images/png/cctv-removebg-preview.png" alt="">
+    </div>
+ </section>
+ <!-- home-content -->
+
+
+<!-- product card -->
+  <div class="container" id="product-card">
+    <h1 class="text-center">PRODUCT</h1>
+    <div class="row" style="margin-top: 30px;">
+      <div class="col-md-3 py-3 py-md-0">
+        <div class="card">
+          <div class="image-container">
+            <a href="buy1.html"><img src="images/png/ceiling-fan-removebg-preview.png" alt=""></a>
+            <i class="fa-solid fa-heart add-to-wishlist" data-id="1" data-name="LED Bulb" data-price="500" data-image="ceiling-fan-removebg-preview.png"></i>
+          </div>
+          <div class="card-body"> 
+            <h3 class="text-center">LED Bulb</h3>
+            <p class="text-center">Lorem ipsum dolor sit amet cons</p>
+            <div class="star text-center">
+              <i class="fa-solid fa-star checked"></i>
+              <i class="fa-solid fa-star checked"></i>
+              <i class="fa-solid fa-star checked"></i>
+              <i class="fa-solid fa-star checked"></i>
+              <i class="fa-solid fa-star checked"></i>
+            </div>
+            <h2>$500 <span><button class="add-to-cart" data-id="1" data-name="LED Bulb" data-price="500" data-image="ceiling-fan-removebg-preview.png"><i class="fa-solid fa-cart-shopping"></i></button></span></h2>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3 py-3 py-md-0">
+        <div class="card">
+          <div class="image-container">
+          <a href="buy2.html"><img src="images/png/led-halogen-removebg-preview.png" alt=""></a>
+            <i class="fa-solid fa-heart add-to-wishlist" data-id="2" data-name="Flex Box Board" data-price="500" data-image="flex-box_board-removebg-preview.png"></i>
+          </div>
+          <div class="card-body">
+            <h3 class="text-center">Flex Box Board</h3>
+            <p class="text-center">Lorem ipsum dolor sit amet cons</p>
+            <div class="star text-center">
+              <i class="fa-solid fa-star checked"></i>
+              <i class="fa-solid fa-star checked"></i>
+              <i class="fa-solid fa-star checked"></i>
+              <i class="fa-solid fa-star checked"></i>
+              <i class="fa-solid fa-star checked"></i>
+
+            </div>
+            <h2>$500 <span><button class="add-to-cart" data-id="2" data-name="Flex Box Board" data-price="500" data-image="flex-box_board-removebg-preview.png"><i class="fa-solid fa-cart-shopping"></i></button></span></h2>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3 py-3 py-md-0">
+        <div class="card">
+          <div class="image-container">
+           <a href="buy3.html"><img src="images/png/ceiling-fan-removebg-preview.png" alt=""></a>
+            <i class="fa-solid fa-heart add-to-wishlist" data-id="3" data-name="Halogen" data-price="500" data-image="led-halogen-removebg-preview.png"></i>
+          </div>
+          <div class="card-body">
+            <h3 class="text-center">Halogen</h3>
+            <p class="text-center">Lorem ipsum dolor sit amet cons</p>
+            <div class="star text-center">
+              <i class="fa-solid fa-star checked"></i>
+              <i class="fa-solid fa-star checked"></i>
+              <i class="fa-solid fa-star checked"></i>
+              <i class="fa-solid fa-star checked"></i>
+              <i class="fa-solid fa-star checked"></i>
+
+            </div>
+           <h2>$500 <span><button class="add-to-cart" data-id="3" data-name="Halogen" data-price="500" data-image="led-halogen-removebg-preview.png"><i class="fa-solid fa-cart-shopping"></i></button></span></h2>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3 py-3 py-md-0">
+        <div class="card">
+          <div class="image-container">
+           <a href="buy4.html"><img src="images/png/cctv-removebg-preview.png" alt=""></a>
+            <i class="fa-solid fa-heart add-to-wishlist" data-id="4" data-name="Ceiling Fan" data-price="500" data-image="ceiling-fan-removebg-preview.png"></i>
+          </div>
+          <div class="card-body">
+            <h3 class="text-center">Ceiling Fan</h3>
+            <p class="text-center">Lorem ipsum dolor sit amet cons</p>
+            <div class="star text-center">
+              <i class="fa-solid fa-star checked"></i>
+              <i class="fa-solid fa-star checked"></i>
+              <i class="fa-solid fa-star checked"></i>
+              <i class="fa-solid fa-star checked"></i>
+              <i class="fa-solid fa-star checked"></i>
+
+            </div>
+           <h2>$500 <span><button class="add-to-cart" data-id="4" data-name="Ceiling Fan" data-price="500" data-image="ceiling-fan-removebg-preview.png"><i class="fa-solid fa-cart-shopping"></i></button></span></h2>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row" style="margin-top: 30px;">
+      <div class="col-md-3 py-3 py-md-0">
+        <div class="card">
+          <div class="image-container">
+            <a href="buy5.html"><img src="images/png/flex-box_board-removebg-preview.png" alt=""></a>
+            <i class="fa-solid fa-heart add-to-wishlist" data-id="5" data-name="Socket" data-price="500" data-image="cctv-removebg-preview.png"></i>
+          </div>
+          <div class="card-body">
+            <h3 class="text-center">Socket</h3>
+            <p class="text-center">Lorem ipsum dolor sit amet cons</p>
+            <div class="star text-center">
+              <i class="fa-solid fa-star checked"></i>
+              <i class="fa-solid fa-star checked"></i>
+              <i class="fa-solid fa-star checked"></i>
+              <i class="fa-solid fa-star checked"></i>
+              <i class="fa-solid fa-star checked"></i>
+            </div>
+           <h2>$500 <span><button class="add-to-cart" data-id="5" data-name="Socket" data-price="500" data-image="cctv-removebg-preview.png"><i class="fa-solid fa-cart-shopping"></i></button></span></h2>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3 py-3 py-md-0">
+        <div class="card">
+          <div class="image-container">
+            <a href="buy6.html"><img src="images/png/ceiling-fan-removebg-preview.png" alt=""></a>
+            <i class="fa-solid fa-heart add-to-wishlist" data-id="6" data-name="Flex Box Board" data-price="500" data-image="flex-box_board-removebg-preview.png"></i>
+          </div>
+          <div class="card-body">
+            <h3 class="text-center">Flex Box Board</h3>
+            <p class="text-center">Lorem ipsum dolor sit amet cons</p>
+            <div class="star text-center">
+              <i class="fa-solid fa-star checked"></i>
+              <i class="fa-solid fa-star checked"></i>
+              <i class="fa-solid fa-star checked"></i>
+              <i class="fa-solid fa-star checked"></i>
+              <i class="fa-solid fa-star checked"></i>
+
+            </div>
+            <h2>$500 <span><button class="add-to-cart" data-id="6" data-name="Flex Box Board" data-price="500" data-image="flex-box_board-removebg-preview.png"><i class="fa-solid fa-cart-shopping"></i></button></span></h2>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3 py-3 py-md-0">
+        <div class="card">
+          <div class="image-container">
+            <a href="buy7.html"><img src="images/png/pvc-wires-removebg-preview.png" alt=""></a>
+            <i class="fa-solid fa-heart add-to-wishlist" data-id="7" data-name="Wires & Cables" data-price="500" data-image="pvc-wires-removebg-preview.png"></i>
+          </div>
+          <div class="card-body">
+            <h3 class="text-center">Wires & Cables</h3>
+            <p class="text-center">Lorem ipsum dolor sit amet cons</p>
+            <div class="star text-center">
+              <i class="fa-solid fa-star checked"></i>
+              <i class="fa-solid fa-star checked"></i>
+              <i class="fa-solid fa-star checked"></i>
+              <i class="fa-solid fa-star checked"></i>
+              <i class="fa-solid fa-star checked"></i>
+
+            </div>
+           <h2>$500 <span><button class="add-to-cart" data-id="7" data-name="Wires & Cables" data-price="500" data-image="pvc-wires-removebg-preview.png"><i class="fa-solid fa-cart-shopping"></i></button></span></h2>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3 py-3 py-md-0">
+        <div class="card">
+          <div class="image-container">
+            <a href="buy8.html"><img src="images/png/ceiling-fan-removebg-preview.png" alt=""></a>
+            <i class="fa-solid fa-heart add-to-wishlist" data-id="8" data-name="Ceiling Fan" data-price="500" data-image="ceiling-fan-removebg-preview.png"></i>
+          </div>
+          <div class="card-body">
+            <h3 class="text-center">Ceiling Fan</h3>
+            <p class="text-center">Lorem ipsum dolor sit amet cons</p>
+            <div class="star text-center">
+              <i class="fa-solid fa-star checked"></i>
+              <i class="fa-solid fa-star checked"></i>
+              <i class="fa-solid fa-star checked"></i>
+              <i class="fa-solid fa-star checked"></i>
+              <i class="fa-solid fa-star checked"></i>
+
+            </div>
+           <h2>$500 <span><button class="add-to-cart" data-id="8" data-name="Ceiling Fan" data-price="500" data-image="ceiling-fan-removebg-preview.png"><i class="fa-solid fa-cart-shopping"></i></button></span></h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- product card -->
+
+
+<!-- other cards -->
+<div class="container" id="other-cards">
+  <div class="row">
+    <div class="col-md-6 py-3 py-md-0">
+      <div class="card">
+        <img src="images/png/cctv-removebg-preview.png" alt="">
+        <div class="card-img-overlay">
+          <h3>Best Electronicals</h3>
+          <h5>Latest Collection</h5>
+          <p>Up to 50% off</p>
+          <button id="shopnow">Shop Now</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6 py-3 py-md-0">
+      <div class="card">
+        <img src="images/png/led-halogen-removebg-preview.png" alt="">
+        <div class="card-img-overlay">
+          <h3>Best Electronicals</h3>
+          <h5>Latest Collection</h5>
+          <p>Up to 50% off</p>
+          <button id="shopnow">Shop Now</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- other cards -->
+
+
+<!-- banner -->
+<section class="banner">
+  <div class="content">
+      <h1><span>Electronical Componenets</span>
+      <br>
+      Up to <span id="span2"> 50%</span> off
+  </h1>
+  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+      Distinctio molestiae, harum ullam earum deleniti dicta corrupti cumque, consequuntur,
+      ipsam eius quod obcaecati laudantium a! Magnam repellat laudantium recusandae nisi iste.</p>
+  <div class="btn"><button>Shop Now</button></div>
+  </div>
+
+  <div class="img">
+      <img src="images/png/cctv-removebg-preview.png" alt="">
+  </div>
+</section>
+<!-- banner -->
+
+
+<!-- offer -->
+<div class="container" id="offer">
+  <div class="row">
+    <div class="col-md-3 py-3 py-md-0">
+      <i class="fa-solid fa-cart-shopping"></i>
+      <h3>Free Shipping</h3>
+      <p>on order over $500</p>
+    </div>
+
+    <div class="col-md-3 py-3 py-md-0">
+      <i class="fa-solid fa-rotate"></i>
+      <h3>Free Returns</h3>
+      <p>Within 30 days</p>
+    </div>
+
+    <div class="col-md-3 py-3 py-md-0">
+      <i class="fa-solid fa-truck"></i>
+      <h3>Fast Delivery</h3>
+      <p>Around the City</p>
+    </div>
+
+    <div class="col-md-3 py-3 py-md-0">
+      <i class="fa-solid fa-thumbs-up"></i>
+      <h3>Big Choice</h3>
+      <p>of products</p>
+    </div>
+  </div>
+</div>
+<!-- offer -->
+
+
+<!-- subscribe -->
+ <div class="container" id="subscribe">
+  <h3 class="text-center">Subscribe to the Electronic shop for the latest upload.</h3>
+  <div class="input text-center">
+    <input type="text" placeholder="enter your email...">
+    <button id="subscribe1">SUBSCRIBE</button>
+  </div>
+ </div>
+<!-- subscribe -->
+
+
+<!-- footer -->
+ <footer id="footer">
+  <div class="footer-top">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-lg-3 col-md-6 footer-contact">
+          <h3>RKS Electronicals</h3>
+          <p>Kolata<br>
+            West Bengal<br>
+            India<br>
+          </p>
+          <strong>Phone :</strong> +91 9856321472<br>
+          <strong>Email :</strong> Electronics@gmail.com<br>
+        </div>
+
+        <div class="col-lg-3 col-md-6 footer-links">
+          <h4>Know More</h4>
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Terms & Conditions</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-3 col-md-6 footer-links">
+          <h4>Join Us</h4>
+          <p>Lorem ipsum dolor sit, amet consectetur 
+            adipisicing elit. Ut, dolorum nulla. Sint, perferendis culpa.</p>
+
+            <div class="social-links mt-3">
+              <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+              <a href="#"><i class="fa-brands fa-facebook"></i></a>
+              <a href="#"><i class="fa-brands fa-instagram"></i></a>
+              <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+              <a href="#"><i class="fa-brands fa-github"></i></a>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr style="color: white;">
+  <div class="container py-4">
+    <div class="copyright">
+      &copy; Copyright <strong><span>RKS Electronicals</span></strong>. All Rights Reserved
+    </div>
+    <div class="credits">
+      Designed by <a href="#">Codes by Faizan</a>
+    </div>
+  </div>
+ </footer>
+
+<!-- footer -->
+
+<script src="script.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Wishlist logic (existing)
+        const wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+        document.querySelectorAll('.add-to-wishlist').forEach(icon => {
+            const product = {
+                id: icon.dataset.id,
+                name: icon.dataset.name,
+                price: icon.dataset.price,
+                image: icon.dataset.image
+            };
+            if (wishlist.some(item => item.id === product.id)) {
+                icon.classList.add('clicked');
+                icon.style.pointerEvents = 'auto'; // Keep pointer events so we can block bubbling
+            }
+            icon.addEventListener('click', (event) => {
+                event.preventDefault();
+                event.stopPropagation();
+                let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+                if (!wishlist.some(item => item.id === product.id)) {
+                    wishlist.push(product);
+                    localStorage.setItem('wishlist', JSON.stringify(wishlist));
+                    icon.classList.add('clicked');
+                    icon.style.pointerEvents = 'auto'; // Keep pointer events so we can block bubbling
+                    updateWishlistCount();
+                }
+            });
+        });
+
+        // Wishlist count logic
+        function updateWishlistCount() {
+            const wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+            const count = wishlist.length;
+            document.querySelectorAll('.wishlist-count').forEach(span => {
+                span.textContent = count;
+            });
+        }
+        updateWishlistCount();
+        window.addEventListener('storage', function(e) {
+            if (e.key === 'wishlist') updateWishlistCount();
+        });
+
+        // Cart count logic
+        function updateCartCount() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const count = cart.length;
+            document.querySelectorAll('.cart-count').forEach(span => {
+                span.textContent = count;
+            });
+        }
+        updateCartCount();
+        window.addEventListener('storage', function(e) {
+            if (e.key === 'cart') updateCartCount();
+        });
+
+        // Add to Cart button logic
+        document.querySelectorAll('.add-to-cart').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const card = btn.closest('.card');
+                const id = btn.getAttribute('data-id');
+                const name = btn.getAttribute('data-name');
+                const price = btn.getAttribute('data-price');
+                const image = btn.getAttribute('data-image');
+                let color = '';
+                const colorBtn = card.querySelector('.color-btn.selected');
+                if (colorBtn) color = colorBtn.getAttribute('data-color') || '';
+                const product = { id, name, price, image, color };
+                let cart = JSON.parse(localStorage.getItem('cart')) || [];
+                // Only add if not already in cart
+                if (!cart.some(item => item.id === id)) {
+                    cart.push(product);
+                    localStorage.setItem('cart', JSON.stringify(cart));
+                    updateCartCount();
+                    // Disable the button after first add
+                    btn.disabled = true;
+                    btn.classList.add('disabled');
+                }
+            });
+        });
+        // Disable cart buttons for already-added items on load
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        document.querySelectorAll('.add-to-cart').forEach(btn => {
+            const id = btn.getAttribute('data-id');
+            if (cart.some(item => item.id === id)) {
+                btn.disabled = true;
+                btn.classList.add('disabled');
+            }
+        });
+    });
+</script>
+<script>
+// Add event listeners to all buy buttons (assuming class 'buy-btn' on buy buttons)
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.buy-btn').forEach(function(btn) {
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            // Find product card context
+            const card = btn.closest('.card');
+            const img = card.querySelector('img')?.getAttribute('src') || '';
+            const title = card.querySelector('h3')?.textContent || '';
+            const priceText = card.querySelector('h2')?.textContent || '';
+            const price = priceText.replace(/[^\d.]/g, '');
+            // For color, look for selected color button or data attribute
+            let color = '';
+            const colorBtn = card.querySelector('.color-btn.selected');
+            if (colorBtn) color = colorBtn.getAttribute('data-color') || '';
+            // Build checkout URL
+            const url = `checkout.html?img=${encodeURIComponent(img)}&title=${encodeURIComponent(title)}&price=${encodeURIComponent(price)}&color=${encodeURIComponent(color)}`;
+            window.location.href = url;
+        });
+    });
+});
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>
